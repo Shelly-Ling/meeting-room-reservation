@@ -114,5 +114,6 @@ export default {
 #form-wrapper {
   width: 500px;
   height: auto;
+  margin-top: 100px;
 }
 </style>
