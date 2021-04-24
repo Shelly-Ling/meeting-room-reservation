@@ -40,6 +40,9 @@
 <script>
 import { required, digits, max } from 'vee-validate/dist/rules'
 import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
+import authorizationAPI from './../apis/authorization'
+// import { apiHelper } from '../utils/helpers.js'
+
 
 setInteractionMode('eager')
 
@@ -64,20 +67,14 @@ export default {
     ValidationProvider,
     ValidationObserver,
   },
+  mounted() {
+    // this.fetchData()
+  },
   data: () => ({
     name: '',
     phoneNumber: '',
   }),
-
   methods: {
-    submit() {
-      this.$refs.observer.validate()
-      const signInUserData = {
-        name: this.name,
-        phoneNumber: this.phoneNumber,
-      }
-      console.log('signInUserData', signInUserData)
-    },
     clear() {
       this.name = ''
       this.phoneNumber = ''
@@ -86,6 +83,38 @@ export default {
       this.checkbox = null
       this.$refs.observer.reset()
     },
+    async submit() {
+      try {
+        this.$refs.observer.validate()
+
+        const response = await authorizationAPI.signIn({
+          name: this.name,
+          phoneNumber: this.phoneNumber
+        })
+
+        const { data } = response
+
+        console.log('signInUser response', data)
+
+        this.$store.commit('setCurrentUser', { data })
+
+        this.$router.push('/rooms')
+
+      } catch (error) {
+        console.log('error', error)
+        alert('登入失敗請稍後再試')
+      }
+    },
+    async fetchData() {
+      try {
+        // const response = await apiHelper.get('/reserved')
+        // console.log('response', response)
+
+      } catch (error) {
+        console.log('error', error)
+        alert('無法取得資料，請稍後再試。')
+      }
+    }
   },
 }
 

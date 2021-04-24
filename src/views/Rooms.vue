@@ -35,7 +35,6 @@ export default {
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
-  border: 1px solid red;
   overflow: scroll;
 }
 </style>
