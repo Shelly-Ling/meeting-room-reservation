@@ -24,24 +24,33 @@
 
     <v-divider class="mx-4"></v-divider>
 
-    <v-card-title>Tonight's availability</v-card-title>
-
-    <v-card-text>
-      <v-chip-group
-        v-model="selection"
-        active-class="deep-purple accent-4 white--text"
-        column
+    <v-card-title>即刻預約</v-card-title>
+    <div id="date-selector">
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
       >
-        <v-chip>5:30PM</v-chip>
-
-        <v-chip>7:30PM</v-chip>
-
-        <v-chip>8:00PM</v-chip>
-
-        <v-chip>9:00PM</v-chip>
-      </v-chip-group>
-    </v-card-text>
-
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="date"
+            label="日期"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="date" @input="menu2 = false"></v-date-picker>
+      </v-menu>
+      <v-spacer></v-spacer>
+    </div>
+    <div id="time-selector">
+      <v-select :items="items" label="時間"></v-select>
+    </div>
     <v-card-actions>
       <v-btn color="deep-purple lighten-2" text @click="reserve">
         Reserve
@@ -54,7 +63,20 @@
 export default {
   data: () => ({
     loading: false,
-    selection: 1,
+    items: [
+      "09:00",
+      "10:00",
+      "11:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00"
+    ],
+    date: new Date().toISOString().substr(0, 10),
+    menu: false,
+    modal: false,
+    menu2: false,
   }),
 
   methods: {
@@ -62,7 +84,17 @@ export default {
       this.loading = true
 
       setTimeout(() => (this.loading = false), 2000)
-    },
+
+      console.log(this.selection, this.date)
+    }
   },
 }
 </script>
+
+<style scoped>
+#time-selector,
+#date-selector {
+  width: 90%;
+  margin: 0 auto;
+}
+</style>
