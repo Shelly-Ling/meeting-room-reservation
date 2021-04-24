@@ -1,16 +1,20 @@
 <template>
-  <v-app id="main">
-    <div id="app">
+  <div id="main">
+    <Navbar />
+    <v-app id="app">
       <router-view />
-    </div>
-  </v-app>
+    </v-app>
+  </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue'
+
 export default {
-  name: 'app',
+  name: 'App',
 
   components: {
+    Navbar,
   },
 
   data: () => ({
@@ -18,3 +22,13 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+#main {
+  display: flex;
+}
+#app {
+  margin: 0 auto;
+  margin-top: 100px;
+}
+</style>
