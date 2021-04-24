@@ -1,9 +1,16 @@
 # meeting-room-reservation
+For booking a meeting room.
 
 ## Project setup
 ```
 npm install
 ```
+
+### Start JSON Server (MUST DO)
+```
+npm run json
+```
+origin data wrote in origin_db_data.json  
 
 ### Compiles and hot-reloads for development
 ```
@@ -19,6 +26,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
