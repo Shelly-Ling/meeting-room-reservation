@@ -15,7 +15,7 @@
 
       <v-list-item v-else :key="item.index">
         <v-list-item-avatar>
-          <v-img :src="item.bookingUser.avatar"></v-img>
+          <v-img :src="item.bookingUser.user.avatar"></v-img>
         </v-list-item-avatar>
         <v-list-item>
           <div>{{ item.bookingUser.name }}</div>
@@ -32,7 +32,13 @@
 </template>
 
 <script>
+import userAPI from '../apis/user'
+import { mapState } from 'vuex'
+
 export default {
+  computed: {
+    ...mapState(['currentUser', 'isAuthenticated'])
+  },
   data: () => ({
     roomA: [
       { header: 'A room' },
@@ -66,6 +72,28 @@ export default {
         bookTime: '16:00',
       }
     ],
-  })
+  }),
+  mounted() {
+    console.log('currentUser', this.currentUser)
+    this.fetchData()
+  },
+  methods: {
+    async fetchData() {
+      // console.log('this.user.id', this.currentUser.id)
+      const response = await userAPI.getUserReservation()
+      const { data } = response
+      console.log('data', data)
+
+
+      this.roomA = [...data]
+      console.log('roomA', this.roomA)
+      // this.ARoomReservation = data[0]
+      // this.BRoomReservation = data[1]
+      // this.CRoomReservation = data[2]
+
+      // console.log('this.ARoomReservation', this.ARoomReservation)
+
+    }
+  }
 }
 </script>

@@ -4,6 +4,9 @@ export default {
   getAllRoomsData() {
     return apiHelper.get('/meetingRooms')
   },
+  getUserReservation() {
+    return apiHelper.get('/rooms_A_reservation')
+  },
   postARoomReservation(payload) {
     return apiHelper.post('/rooms_A_reservation', {
       ...payload
@@ -18,5 +21,5 @@ export default {
     return apiHelper.post('/rooms_C_reservation', {
       ...payload
     })
-  }
+  },
 }
