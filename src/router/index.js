@@ -43,11 +43,6 @@ const routes = [
     component: () => import('../views/AdminReservation.vue')
   },
   {
-    path: '/signin',
-    name: 'admin-sign-in',
-    component: () => import('../views/AdminSignIn.vue')
-  },
-  {
     path: '*',
     name: 'not-found',
     component: () => import('../views/NotFound.vue')

@@ -11,24 +11,21 @@
           <v-text-field
             v-model="name"
             :error-messages="errors"
-            ㄋ
             label="姓名"
             required
           ></v-text-field>
         </validation-provider>
         <validation-provider
           v-slot="{ errors }"
-          name="phoneNumber"
+          name="password"
           :rules="{
             required: true,
-            digits: 10,
           }"
         >
           <v-text-field
-            v-model="phoneNumber"
-            :counter="10"
+            v-model="password"
             :error-messages="errors"
-            label="手機號碼"
+            label="密碼"
             required
           ></v-text-field>
         </validation-provider>
@@ -36,7 +33,7 @@
         <v-btn @click="clear"> 重置 </v-btn>
       </form>
     </validation-observer>
-    <div class="sign-in-btn">
+    <div class="sign-in-btn" v-if="!isAuthenticated">
       <router-link to="/signin">用戶登入</router-link>
     </div>
   </div>
@@ -47,6 +44,7 @@
 import { required, digits, max } from 'vee-validate/dist/rules'
 import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
 import authorizationAPI from './../apis/authorization'
+import { mapState } from 'vuex'
 // import { apiHelper } from '../utils/helpers.js'
 
 
@@ -78,24 +76,21 @@ export default {
   },
   data: () => ({
     name: '',
-    phoneNumber: '',
+    password: '',
   }),
   methods: {
     clear() {
       this.name = ''
-      this.phoneNumber = ''
-      this.email = ''
-      this.select = null
-      this.checkbox = null
+      this.password = ''
       this.$refs.observer.reset()
     },
     async submit() {
       try {
         this.$refs.observer.validate()
 
-        const response = await authorizationAPI.signIn({
+        const response = await authorizationAPI.adminSignIn({
           name: this.name,
-          phoneNumber: this.phoneNumber
+          password: this.password
         })
 
         const { data } = response
@@ -121,6 +116,9 @@ export default {
         alert('無法取得資料，請稍後再試。')
       }
     }
+  },
+  computed: {
+    ...mapState(['currentUser', 'isAuthenticated', 'isAdmin'])
   },
 }
 

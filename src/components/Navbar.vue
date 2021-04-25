@@ -8,8 +8,22 @@
             <v-list-item-subtitle class="user-name">
               {{ currentUser.name ? currentUser.name : "使用者" }}
             </v-list-item-subtitle>
+            <v-list-item-subtitle class="admin-user-name" v-if="isAdmin">
+              管理員
+            </v-list-item-subtitle>
             <v-list-item-subtitle class="greeting"> 您好 </v-list-item-subtitle>
           </div>
+          <router-link to="/admin/signin" class="admin-sign-in-link">
+            <v-btn
+              class="admin-sign-in-btn"
+              small
+              outlined
+              color="indigo"
+              v-if="isAuthenticated && !isAdmin"
+            >
+              管理員登入
+            </v-btn>
+          </router-link>
         </v-list-item-content>
       </v-list-item>
 
@@ -17,7 +31,7 @@
 
       <v-list dense nav v-if="isAuthenticated">
         <router-link to="/reservation">
-          <v-list-item link>
+          <v-list-item link v-if="!isAdmin">
             <v-list-item-icon>
               <i class="fas fa-stamp"></i>
             </v-list-item-icon>
@@ -25,7 +39,7 @@
           </v-list-item>
         </router-link>
         <router-link to="/rooms">
-          <v-list-item link>
+          <v-list-item link v-if="!isAdmin">
             <v-list-item-icon>
               <i class="fas fa-handshake"></i>
             </v-list-item-icon>
@@ -69,12 +83,20 @@ export default {
 
 <style scoped>
 .user-name,
+.admin-user-name,
 .greeting {
   display: inline-block;
   margin: 10px 0;
 }
+.admin-user-name,
 .greeting {
   margin-left: 10px;
+}
+.sign-in-btn {
+  font-size: 6px;
+}
+.admin-sign-in-link {
+  text-decoration: none;
 }
 </style>
 

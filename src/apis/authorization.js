@@ -6,5 +6,11 @@ export default {
       name,
       phoneNumber,
     })
+  },
+  adminSignIn({ name, password }) {
+    return apiHelper.post('/admin_signin', {
+      name,
+      password,
+    })
   }
 }
