@@ -9,13 +9,72 @@
   "reserved": [
     {
       "id": 1,
-      "roomName": "A Room",
-      "bookTime": ""
+      "reserved": {
+        "roomA": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "09: 00",
+            "16: 00"
+          ]
+        },
+        "roomB": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "14: 00",
+            "15: 00",
+            "17: 00"
+          ]
+        },
+        "roomC": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "11: 00",
+            "14: 00",
+            "16: 00"
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "reserved": {
+        "roomA": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "10: 00",
+            "15: 00"
+          ]
+        },
+        "roomB": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "13: 00",
+            "16: 00"
+          ]
+        },
+        "roomC": {
+          "id": 1,
+          "name": "John",
+          "avatar": "https: //cdn.vuetifyjs.com/images/lists/1.jpg",
+          "bookTime": [
+            "09: 00",
+            "10: 00",
+            "17: 00"
+          ]
+        }
+      }
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
   "meetingRooms": [
     {
       "id": 1,
@@ -43,6 +102,72 @@
         "09:00",
         "14:00"
       ]
+    }
+  ],
+  "rooms/A/reservation": [
+    {
+      "id": 1,
+      "date": "2021-05-20",
+      "time": "09:00",
+      "user": {
+        "id": 1,
+        "name": "Lisa",
+        "avatar": "https: //cdn.vuetifyjs.com/images/lists/2.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "date": "2021-05-10",
+      "time": "17:00",
+      "user": {
+        "id": 1,
+        "name": "Alice",
+        "avatar": "https://cdn.vuetifyjs.com/images/lists/1.jpg"
+      }
+    }
+  ],
+  "rooms/B/reservation": [
+    {
+      "id": 1,
+      "date": "2021-04-25",
+      "time": "09:00",
+      "user": {
+        "id": 1,
+        "name": "Lisa",
+        "avatar": "https: //cdn.vuetifyjs.com/images/lists/2.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "date": "2021-04-26",
+      "time": "17:00",
+      "user": {
+        "id": 1,
+        "name": "Alice",
+        "avatar": "https://cdn.vuetifyjs.com/images/lists/1.jpg"
+      }
+    }
+  ],
+  "rooms/C/reservation": [
+    {
+      "id": 1,
+      "date": "2021-04-26",
+      "time": "17:00",
+      "user": {
+        "id": 1,
+        "name": "Lisa",
+        "avatar": "https: //cdn.vuetifyjs.com/images/lists/2.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "date": "2021-04-26",
+      "time": "15:00",
+      "user": {
+        "id": 1,
+        "name": "Alice",
+        "avatar": "https://cdn.vuetifyjs.com/images/lists/1.jpg"
+      }
     }
   ]
 }
