@@ -1,7 +1,7 @@
 <template>
   <div id="form-wrapper">
     <validation-observer ref="observer" v-slot="{ invalid }">
-      <h2>用戶登入</h2>
+      <h2>管理員登入</h2>
       <form @submit.prevent="submit">
         <validation-provider
           v-slot="{ errors }"
@@ -11,6 +11,7 @@
           <v-text-field
             v-model="name"
             :error-messages="errors"
+            ㄋ
             label="姓名"
             required
           ></v-text-field>
@@ -36,7 +37,7 @@
       </form>
     </validation-observer>
     <div class="sign-in-btn">
-      <router-link to="/admin/signin">管理員登入</router-link>
+      <router-link to="/signin">用戶登入</router-link>
     </div>
   </div>
 </template>
@@ -99,11 +100,11 @@ export default {
 
         const { data } = response
 
-        console.log('signInUser response', data)
+        console.log('AdminUser response', data)
 
-        this.$store.commit('setCurrentUser', { data })
+        this.$store.commit('setAdminUser', { data })
 
-        this.$router.push('/rooms')
+        this.$router.push('/admin/reservation')
 
       } catch (error) {
         console.log('error', error)

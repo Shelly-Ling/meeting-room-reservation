@@ -4,13 +4,18 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title"> 會議室預約 </v-list-item-title>
-          <v-list-item-subtitle> 使用者 您好 </v-list-item-subtitle>
+          <div class="user-greeting">
+            <v-list-item-subtitle class="user-name">
+              {{ currentUser.name ? currentUser.name : "使用者" }}
+            </v-list-item-subtitle>
+            <v-list-item-subtitle class="greeting"> 您好 </v-list-item-subtitle>
+          </div>
         </v-list-item-content>
       </v-list-item>
 
       <v-divider></v-divider>
 
-      <v-list dense nav>
+      <v-list dense nav v-if="isAuthenticated">
         <router-link to="/reservation">
           <v-list-item link>
             <v-list-item-icon>
@@ -27,7 +32,7 @@
             <v-list-item-title>會議室預約</v-list-item-title>
           </v-list-item>
         </router-link>
-        <router-link to="/admin/reservation">
+        <router-link to="/admin/reservation" v-if="isAdmin">
           <v-list-item link>
             <v-list-item-icon>
               <i class="fas fa-star"></i>
@@ -57,11 +62,19 @@ export default {
     }
   },
   computed: {
-    ...mapState(['currentUser', 'isAuthenticated'])
+    ...mapState(['currentUser', 'isAuthenticated', 'isAdmin'])
   },
 }
 </script>
 
 <style scoped>
+.user-name,
+.greeting {
+  display: inline-block;
+  margin: 10px 0;
+}
+.greeting {
+  margin-left: 10px;
+}
 </style>
 

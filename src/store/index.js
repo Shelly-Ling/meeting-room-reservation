@@ -10,7 +10,8 @@ export default new Vuex.Store({
       name: '',
       phoneNumber: '',
     },
-    isAuthenticated: false
+    isAuthenticated: false,
+    isAdmin: false
 
   },
   mutations: {
@@ -21,6 +22,14 @@ export default new Vuex.Store({
         ...currentUser.data
       }
       state.isAuthenticated = true
+    },
+    setAdminUser(state, currentUser) {
+      state.currentUser = {
+        ...state.currentUser,
+        ...currentUser.data
+      }
+      state.isAuthenticated = true
+      state.isAdmin = true
     }
   },
   actions: {

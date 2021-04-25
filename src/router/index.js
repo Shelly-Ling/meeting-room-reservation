@@ -6,7 +6,7 @@ import Rooms from '../views/Rooms.vue'
 import Reservation from '../views/Reservation.vue'
 import AdminReservation from '../views/AdminReservation.vue'
 import TestPage from '../views/TestPage.vue'
-
+import AdminSignIn from '../views/AdminSignIn.vue'
 
 
 Vue.use(VueRouter)
@@ -38,9 +38,19 @@ const routes = [
     component: Reservation
   },
   {
+    path: '/admin/signin',
+    name: 'admin-sign-in',
+    component: AdminSignIn
+  },
+  {
     path: '/admin/reservation',
     name: 'admin-reservation',
     component: AdminReservation
+  },
+  {
+    path: '/signin',
+    name: 'sign-in',
+    component: AdminSignIn
   },
   {
     path: '*',
