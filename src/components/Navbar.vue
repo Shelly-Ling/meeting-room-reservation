@@ -27,6 +27,14 @@
             <v-list-item-title>會議室預約</v-list-item-title>
           </v-list-item>
         </router-link>
+        <router-link to="/admin/reservation">
+          <v-list-item link>
+            <v-list-item-icon>
+              <i class="fas fa-star"></i>
+            </v-list-item-icon>
+            <v-list-item-title>會議室管理</v-list-item-title>
+          </v-list-item>
+        </router-link>
         <!-- 
         <v-list-item link>
           <v-list-item-icon>

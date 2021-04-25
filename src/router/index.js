@@ -4,6 +4,9 @@ import NotFound from '../views/NotFound.vue'
 import SignIn from '../views/SignIn.vue'
 import Rooms from '../views/Rooms.vue'
 import Reservation from '../views/Reservation.vue'
+import AdminReservation from '../views/AdminReservation.vue'
+import TestPage from '../views/TestPage.vue'
+
 
 
 Vue.use(VueRouter)
@@ -13,6 +16,11 @@ const routes = [
     path: '/',
     name: 'root',
     redirect: '/signin'
+  },
+  {
+    path: '/testpage',
+    name: 'test-page',
+    component: TestPage
   },
   {
     path: '/signin',
@@ -28,6 +36,11 @@ const routes = [
     path: '/reservation',
     name: 'reservation',
     component: Reservation
+  },
+  {
+    path: '/admin/reservation',
+    name: 'admin-reservation',
+    component: AdminReservation
   },
   {
     path: '*',
