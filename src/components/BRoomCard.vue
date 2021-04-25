@@ -8,29 +8,25 @@
       ></v-progress-linear>
     </template>
 
-    <v-img
-      height="150"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    ></v-img>
+    <v-img height="150" :src="roomB.image"></v-img>
 
-    <v-card-title>Cafe Badilico</v-card-title>
+    <v-card-title> {{ roomB.name }}</v-card-title>
 
     <v-card-text>
       <div>
-        Small plates, salads & sandwiches - an intimate setting with 12 indoor
-        seats plus patio seating.
+        {{ roomB.description }}
       </div>
     </v-card-text>
 
     <v-divider class="mx-4"></v-divider>
-    <v-card-text>
-      <div>可預約時段</div>
+    <!-- <v-card-text>
+      <div>已預約時段</div>
       <div id="available-time-wrapper">
-        <div class="available-time">09:00</div>
         <div class="available-time">13:00</div>
+        <div class="available-time">16:00</div>
         <div class="available-time">17:00</div>
       </div>
-    </v-card-text>
+    </v-card-text> -->
 
     <v-card-title>即刻預約</v-card-title>
     <form @submit.prevent="reserve">
@@ -71,15 +67,20 @@
 </template>
 
 <script>
+import userAPI from '../apis/user'
+import { mapState } from 'vuex'
+
+
 export default {
-  props: {
-    initial: {
-      type: Object,
-      require: true
-    }
+  computed: {
+    ...mapState(['currentUser'])
+  },
+  mounted() {
+    this.fetchRoomsData()
   },
   data: () => ({
-    rooms: this.initial,
+    roomB: {},
+    bookedTime: [],
     loading: false,
     bookTime: '',
     date: new Date().toISOString().substr(0, 10),
@@ -96,26 +97,37 @@ export default {
       "17:00"
     ],
   }),
-  mounted() {
-    // console.log('rooms', this.rooms)
-  },
+
   methods: {
     reserve() {
       this.loading = true
 
       setTimeout(() => (this.loading = false), 2000)
 
-      const data = {
-        bookTime: this.bookTime,
+      const payload = {
         date: this.date,
+        time: this.bookTime,
+        user: {
+          id: this.currentUser.id,
+          name: this.currentUser.name,
+          avatar: this.currentUser.avatar
+        }
       }
+      userAPI.postBRoomReservation(payload)
+      console.log('payload', payload)
 
-      console.log('data', data)
-
-      // this.handleSubmit()
     },
-    handleSubmit(data) {
-      console.log('data', data)
+    async fetchRoomsData() {
+      try {
+        const response = await userAPI.getAllRoomsData()
+        const { data } = response
+
+        this.roomB = { ...data[1] }
+        this.bookedTime = { ...data[1].reserved }
+
+      } catch (error) {
+        console.log('error', error)
+      }
     }
   },
 }

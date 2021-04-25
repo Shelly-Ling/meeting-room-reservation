@@ -1,27 +1,68 @@
 <template>
   <div id="room-wrapper">
+    <!-- <div class="card">
+      <Room :initial="rooms" />
+    </div> -->
     <div class="card">
-      <Room />
+      <ARoomCard />
     </div>
     <div class="card">
-      <Room />
+      <BRoomCard />
     </div>
     <div class="card">
-      <Room />
-    </div>
-    <div class="card">
-      <Room />
+      <CRoomCard />
     </div>
   </div>
 </template>
 
 <script>
-import Room from '../components/Room.vue'
+import ARoomCard from '../components/ARoomCard.vue'
+import BRoomCard from '../components/BRoomCard.vue'
+import CRoomCard from '../components/CRoomCard.vue'
+// import Room from '../components/Room.vue'
+
+
+// import userAPI from '../apis/user'
+
 
 export default {
-
   components: {
-    Room
+    // Room,
+    ARoomCard,
+    BRoomCard,
+    CRoomCard
+  },
+  data() {
+    return {
+      // rooms: []
+      roomA: {},
+      roomB: {},
+      roomC: {},
+    }
+  },
+  mounted() {
+    // this.fetchRoomsData()
+  },
+  methods: {
+    // async fetchRoomsData() {
+    //   try {
+    //     const response = await userAPI.getAllRoomsData()
+    //     const { data } = response
+
+    //     // this.rooms = { ...data }
+
+    //     this.roomA = { ...data[0] }
+    //     this.roomB = { ...data[1] }
+    //     this.roomC = { ...data[2] }
+
+    //     console.log('this.roomA', this.roomA)
+    //     console.log('this.roomB', this.roomB)
+    //     console.log('this.roomC', this.roomC)
+
+    //   } catch (error) {
+    //     console.log('error', error)
+    //   }
+    // }
   }
 }
 </script>

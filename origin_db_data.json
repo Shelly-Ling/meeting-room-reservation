@@ -6,6 +6,13 @@
       "phoneNumber": ""
     }
   ],
+  "admin_signin": [
+    {
+      "id": -1,
+      "name": "",
+      "phoneNumber": ""
+    }
+  ],
   "reserved": [
     {
       "id": 1,
@@ -79,7 +86,8 @@
     {
       "id": 1,
       "name": "A Room",
-      "description": "20 個座位",
+      "description": "設備有投影機、電腦、白板、能容納約 20人。",
+      "image": "https://lh3.google.com/u/0/d/1a5op6kgcNvzEACsAgzthk3fkNuVs4lEK=w2078-h1466-iv1",
       "reserved": [
         "15:00",
         "17:00"
@@ -88,7 +96,8 @@
     {
       "id": 2,
       "name": "B Room",
-      "description": "10 個座位",
+      "image": "https://lh3.google.com/u/0/d/1JsdYEyeliCDmjxXiJRySZrqKNgbGpsr7=w2078-h1466-iv1",
+      "description": "設備有投影機、白板、能容納約 10 人。",
       "reserved": [
         "13:00",
         "16:00"
@@ -97,14 +106,15 @@
     {
       "id": 3,
       "name": "C Room",
-      "description": "5 個座位",
+      "image": "https://lh3.google.com/u/0/d/17THSqxwiZ6OEnelnPWSPhIJXL8vj7iva=w2078-h1466-iv1",
+      "description": "簡約會議室，能容納 4 人。",
       "reserved": [
         "09:00",
         "14:00"
       ]
     }
   ],
-  "rooms/A/reservation": [
+  "rooms_A_reservation": [
     {
       "id": 1,
       "date": "2021-05-20",
@@ -126,7 +136,7 @@
       }
     }
   ],
-  "rooms/B/reservation": [
+  "rooms_B_reservation": [
     {
       "id": 1,
       "date": "2021-04-25",
@@ -148,7 +158,7 @@
       }
     }
   ],
-  "rooms/C/reservation": [
+  "rooms_C_reservation": [
     {
       "id": 1,
       "date": "2021-04-26",
