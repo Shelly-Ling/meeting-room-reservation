@@ -1,12 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import NotFound from '../views/NotFound.vue'
 import SignIn from '../views/SignIn.vue'
-import Rooms from '../views/Rooms.vue'
-import Reservation from '../views/Reservation.vue'
-import AdminReservation from '../views/AdminReservation.vue'
 import TestPage from '../views/TestPage.vue'
-import AdminSignIn from '../views/AdminSignIn.vue'
 
 
 Vue.use(VueRouter)
@@ -30,32 +25,32 @@ const routes = [
   {
     path: '/rooms',
     name: 'meeting-rooms',
-    component: Rooms
+    component: () => import('../views/Rooms.vue')
   },
   {
     path: '/reservation',
     name: 'reservation',
-    component: Reservation
+    component: () => import('../views/Reservation.vue')
   },
   {
     path: '/admin/signin',
     name: 'admin-sign-in',
-    component: AdminSignIn
+    component: () => import('../views/AdminSignIn.vue')
   },
   {
     path: '/admin/reservation',
     name: 'admin-reservation',
-    component: AdminReservation
+    component: () => import('../views/AdminReservation.vue')
   },
   {
     path: '/signin',
-    name: 'sign-in',
-    component: AdminSignIn
+    name: 'admin-sign-in',
+    component: () => import('../views/AdminSignIn.vue')
   },
   {
     path: '*',
     name: 'not-found',
-    component: NotFound
+    component: () => import('../views/NotFound.vue')
   },
   // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
 ]
